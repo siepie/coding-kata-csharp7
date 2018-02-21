@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Xunit;
+﻿using Xunit;
 
 namespace StringCalculator.Tests
 {
@@ -8,9 +7,7 @@ namespace StringCalculator.Tests
         [Fact]
         public void CalculateReturnsZeroAndZero()
         {
-            string numbers = "";
-            (int sum, int difference) expected = (0, 0);
-            StringCalculator.Calculate(numbers).Should().Be(expected);
+
         }
     }
 }

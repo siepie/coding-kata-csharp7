@@ -2,12 +2,12 @@
 # String Calculator Kata for learning new features C# 7
 * Modified version of the well known String Calculator Kata, purpose is to use out variables, local functions and tuples 
 
- ## Before you start:
- * Try not to read ahead.
- * Do one task at a time. The trick is to learn to work incrementally.
- * Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata 
+## Before you start:
+* Try not to read ahead.
+* Do one task at a time. The trick is to learn to work incrementally.
+* Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata 
  
- 1.  Create a simple String calculator with a method Calculate(string numbers)
+1.  Create a simple String calculator with a method Calculate(string numbers)
  
    a.  The method can take 0, 1 or 2 numbers, and will return their sum and difference 
        (for an empty string it will return 0) for example “” or “1” or “1,2”    

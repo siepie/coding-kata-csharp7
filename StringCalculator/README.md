@@ -1,45 +1,43 @@
-# coding-kata-csharp7
-Collection of coding katas using C# 7
-## String Calculator
-Modified version of the well known String Calculator Kata, purpose is to use out variables, local functions and tuples
 
+# String Calculator Kata for learning new features C# 7
+* Modified version of the well known String Calculator Kata, purpose is to use out variables, local functions and tuples 
 
- *
- * String Calculator Kata for learning new features C# 7
- * 
- * 
- * 
- *  Before you start:
- *
- *     - Try not to read ahead.
- *     - Do one task at a time. The trick is to learn to work incrementally.
- *     - Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata
- *
- *  String Calculator Kata 
- *
- *  1.  Create a simple String calculator with a method Calculate(string numbers)
- *      a.  The method can take 0, 1 or 2 numbers, and will return their sum and difference (for an empty string it will return 0) for example ìî or ì1î or ì1,2î
- *      b.  Start with the simplest test case of an empty string and move to 1 and two numbers
- *      c.  Remember to solve things as simply as possible so that you force yourself to write tests you did not think about
- *      d.  Remember to refactor after each passing test
- *  2.  Allow the method to handle an unknown amount of numbers
- *  3.  Allow the method to handle new lines between numbers (instead of commas).
- *      a.  the following input is ok:  ì1\n2,3î  (will equal 6)
- *      b.  the following input is NOT ok:  ì1,\nî (not need to prove it - just clarifying)
- *  4.  Support different delimiters
- *      a.  to change a delimiter, the beginning of the string will contain a separate line that looks like this:   ì//[delimiter]\n[numbersÖ]î for example ì//;\n1;2î should return three where the default delimiter is ë;í .
- *      b.  the first line is optional. all existing scenarios should still be supported
- *  5.  Calling Calculate with a negative number will throw an exception ìnegatives not allowedî - and the negative that was passed.if there are multiple negatives, show all of them in the exception message
- *  
- *  -----------------------------------------------------------------------------------------------------
- *  stop here if you are a beginner. Continue if you can finish the steps so far in less than 30 minutes.
- *  -----------------------------------------------------------------------------------------------------
- *  
- *  6.  Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
- *  7.  Delimiters can be of any length with the following format:  ì//[delimiter]\nî for example: ì//[***]\n1***2***3î should return 6
- *  8.  Allow multiple delimiters like this:  ì//[delim1][delim2]\nî for example ì//[*][%]\n1*2%3î should return 6.
- *  9.  make sure you can also handle multiple delimiters with length longer than one char
- * 
- * 
- *
+ ## Before you start:
+ * Try not to read ahead.
+ * Do one task at a time. The trick is to learn to work incrementally.
+ * Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata
+ 
+ ## String Calculator Kata 
+ 
+ 1.  Create a simple String calculator with a method Calculate(string numbers)
+    a.  The method can take 0, 1 or 2 numbers, and will return their sum and difference (for an empty string it will return 0) for example ‚Äú‚Äù or ‚Äú1‚Äù or ‚Äú1,2‚Äù
+    b.  Start with the simplest test case of an empty string and move to 1 and two numbers
+    c.  Remember to solve things as simply as possible so that you force yourself to write tests you did not think about
+    d.  Remember to refactor after each passing test
+ 
+ 2.  Allow the method to handle an unknown amount of numbers
+ 
+ 3.  Allow the method to handle new lines between numbers (instead of commas).
+    a.  the following input is ok:  ‚Äú1\n2,3‚Äù  (will equal 6)
+    b.  the following input is NOT ok:  ‚Äú1,\n‚Äù (not need to prove it - just clarifying)
+ 
+ 4.  Support different delimiters
+    a.  to change a delimiter, the beginning of the string will contain a separate line that looks like this:   ‚Äú//[delimiter]\n[numbers‚Ä¶]‚Äù for example ‚Äú//;\n1;2‚Äù should return three where the default delimiter is ‚Äò;‚Äô .
+    b.  the first line is optional. all existing scenarios should still be supported
+ 
+ 5.  Calling Calculate with a negative number will throw an exception ‚Äúnegatives not allowed‚Äù - and the negative that was passed.if there are multiple negatives, show all of them in the exception message
+ 
+  
+ ### -----------------------------------------------------------------------------------------------------
+      If you still have time, continue...
+ ### -----------------------------------------------------------------------------------------------------
+ 
+ 6.  Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
+ 
+ 7.  Delimiters can be of any length with the following format:  ‚Äú//[delimiter]\n‚Äù for example: ‚Äú//[***]\n1***2***3‚Äù should return 6
+ 
+ 8.  Allow multiple delimiters like this:  ‚Äú//[delim1][delim2]\n‚Äù for example ‚Äú//[*][%]\n1*2%3‚Äù should return 6.
+ 
+ 9.  make sure you can also handle multiple delimiters with length longer than one char
+ 
 

@@ -9,7 +9,7 @@
  
  ## String Calculator Kata 
  
- 1.  Create a simple String calculator with a method Calculate(string numbers) 
+ 1.  Create a simple String calculator with a method Calculate(string numbers)
     a.  The method can take 0, 1 or 2 numbers, and will return their sum and difference (for an empty string it will return 0) 
          for example   “” or “1” or “1,2”    
     b.  Start with the simplest test case of an empty string and move to 1 and two numbers    

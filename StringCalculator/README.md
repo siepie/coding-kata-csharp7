@@ -6,17 +6,19 @@
 * Try not to read ahead.
 * Do one task at a time. The trick is to learn to work incrementally.
 * Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata 
+
+## The assignment
+
+1. Create a simple String calculator with a method Calculate(string numbers)
  
-1.  Create a simple String calculator with a method Calculate(string numbers)
- 
-   a.  The method can take 0, 1 or 2 numbers, and will return their sum and difference 
+   a. The method can take 0, 1 or 2 numbers, and will return their sum and difference 
        (for an empty string it will return 0) for example “” or “1” or “1,2”    
    
-   b.  Start with the simplest test case of an empty string and move to 1 and two numbers    
+   b. Start with the simplest test case of an empty string and move to 1 and two numbers    
    
-   c.  Remember to solve things as simply as possible so that you force yourself to write tests you did not think about    
+   c. Remember to solve things as simply as possible so that you force yourself to write tests you did not think about    
    
-   d.  Remember to refactor after each passing test
+   d. Remember to refactor after each passing test
  
  2.  Allow the method to handle an unknown amount of numbers
  

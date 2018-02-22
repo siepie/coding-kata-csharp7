@@ -20,25 +20,28 @@
    
    d. Remember to refactor after each passing test
  
- 2.  Allow the method to handle an unknown amount of numbers
+2. Allow the method to handle an unknown amount of numbers
  
- 3.  Allow the method to handle new lines between numbers (instead of commas).
-    a.  the following input is ok:  “1\n2,3”  (will equal 6)
-    b.  the following input is NOT ok:  “1,\n” (not need to prove it - just clarifying)
+3. Allow the method to handle new lines between numbers (instead of commas).
+    
+    a. the following input is ok:  “1\n2,3”  (will equal 6)
+    
+    b. the following input is NOT ok:  “1,\n” (not need to prove it - just clarifying)
  
- 4.  Support different delimiters
-    a.  to change a delimiter, the beginning of the string will contain a separate line that looks like this:   
+4. Support different delimiters
+    
+    a. to change a delimiter, the beginning of the string will contain a separate line that looks like this:   
         “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
         
-    b.  the first line is optional. all existing scenarios should still be supported
+    b. the first line is optional. all existing scenarios should still be supported
  
- 5.  Calling Calculate with a negative number will throw an exception “negatives not allowed” - 
+5. Calling Calculate with a negative number will throw an exception “negatives not allowed” - 
      and the negative that was passed.if there are multiple negatives, show all of them in the exception message
  
   
- ### -----------------------------------------------------------------------------------------------------
+ ## -----------------------------------------------------------------------------------------------------
       If you still have time, continue...
- ### -----------------------------------------------------------------------------------------------------
+ ## -----------------------------------------------------------------------------------------------------
  
  6.  Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
  

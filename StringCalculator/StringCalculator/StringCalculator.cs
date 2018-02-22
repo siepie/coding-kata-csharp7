@@ -1,33 +1,27 @@
-﻿namespace StringCalculator
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace StringCalculator
 {
     public class StringCalculator
     {
         public static (int Sum, int Difference) Calculate(string numbers)
         {
-            if (string.IsNullOrWhiteSpace(numbers))
-            {
-                return (0, 0);
-            }
+            if (string.IsNullOrWhiteSpace(numbers)) return (0, 0);
 
-            var input = numbers.Split(',');
-            int t = 0;
-            int d = 0;
-            foreach (var number in input)
-            {
-                t = t + GetNumberFromString(number);
-                d = d - GetNumberFromString(number);
-            }
+            var numbersToCalc = GetNumberFromString();
 
-            int GetNumberFromString(string number)
-            {
-                if (int.TryParse(number, out var parsedNumber))
-                {
-                    return parsedNumber;
-                }
-                return 0;
-            }
+            var sum = numbersToCalc.Sum();
+            var difference = numbersToCalc.First();
+            difference = numbersToCalc.Where((t, i) => i > 0).Aggregate(difference, (current, t) => current - t);
 
-            return (t, d);
+            return (sum, difference);
+
+            List<int> GetNumberFromString()
+            {
+                var input = numbers.Split(',');
+                return input.Select(number => int.TryParse(number, out var parsedNumber) ? parsedNumber : 0).ToList();
+            }
         }
     }
 

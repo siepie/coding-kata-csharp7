@@ -1,6 +1,7 @@
 
 # String Calculator Kata for learning new features C# 7
-* Modified version of the well known String Calculator Kata, purpose is to use out variables, local functions and tuples 
+* Modified version of the well known String Calculator Kata (http://osherove.com/tdd-kata-1/), 
+   purpose is to use out variables, local functions and tuples 
 
 ## Before you start:
 * Try not to read ahead.

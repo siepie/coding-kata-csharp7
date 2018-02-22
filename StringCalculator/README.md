@@ -7,7 +7,7 @@
  * Do one task at a time. The trick is to learn to work incrementally.
  * Make sure you only test for correct inputs. there is no need to test for invalid inputs for this kata
  
- ## String Calculator Kata 
+ # String Calculator Kata 
  
  1.  Create a simple String calculator with a method Calculate(string numbers)
      a.  The method can take 0, 1 or 2 numbers, and will return their sum and difference 

@@ -1,4 +1,4 @@
-
+﻿
 # String Calculator Kata for learning new features C# 7
 * Modified version of the well known String Calculator Kata (http://osherove.com/tdd-kata-1/), 
    purpose is to use out variables, local functions and tuples 
@@ -25,14 +25,14 @@
  
 3. Allow the method to handle new lines between numbers (instead of commas).
     
-    a. the following input is ok:  “1\n2,3”  (will equal 6)
+    a. the following input is ok:  “1\n2,3”  (will return 6 and 0)
     
-    b. the following input is NOT ok:  “1,\n” (not need to prove it - just clarifying)
+    b. the following input is handled as 1 number:  “1,\n” (will return 1 and 1)
  
 4. Support different delimiters
     
     a. to change a delimiter, the beginning of the string will contain a separate line that looks like this:   
-        “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
+        “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return 3 and -1 where the default delimiter is ‘;’ .
         
     b. the first line is optional. all existing scenarios should still be supported
  
@@ -44,11 +44,11 @@
  ## If you still have time, continue...
  ## -------------------------------------------------------------------------------------------
  
- 6.  Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
+ 6.  Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2 and 2 - 1001 = 1
  
- 7.  Delimiters can be of any length with following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
+ 7.  Delimiters can be of any length with following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6 and 0
  
- 8.  Allow multiple delimiters like this:  “//[delim1][delim2]\n” for example “//[*][%]\n1*2%3” should return 6.
+ 8.  Allow multiple delimiters like this:  “//[delim1][delim2]\n” for example “//[*][%]\n1*2%3” should return 6 and 0.
  
  9.  make sure you can also handle multiple delimiters with length longer than one char
  

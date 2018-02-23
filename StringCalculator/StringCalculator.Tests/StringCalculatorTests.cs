@@ -58,5 +58,41 @@ namespace StringCalculator.Tests
             Sum.Should().Be(35);
             Difference.Should().Be(3);
         }
+
+        [Fact]
+        public void CalculateWithNewLineDelimiters()
+        {
+            string numbers = "19,4,1,2\n9";
+            var (Sum, Difference) = StringCalculator.Calculate(numbers);
+            Sum.Should().Be(35);
+            Difference.Should().Be(3);
+        }
+
+        [Fact]
+        public void CalculateWithOneNumberAndNewLineDelimiter()
+        {
+            string numbers = "19,\n";
+            var (Sum, Difference) = StringCalculator.Calculate(numbers);
+            Sum.Should().Be(19);
+            Difference.Should().Be(19);
+        }
+
+        [Fact]
+        public void CalculateWithCustomDelimiters()
+        {
+            string numbers = "//;\n19;9";
+            var (Sum, Difference) = StringCalculator.Calculate(numbers);
+            Sum.Should().Be(28);
+            Difference.Should().Be(10);
+        }
+
+        [Fact]
+        public void CalculateWithDefaultAndCustomDelimiters()
+        {
+            string numbers = "//**\n19**4,1,2\n9";
+            var (Sum, Difference) = StringCalculator.Calculate(numbers);
+            Sum.Should().Be(35);
+            Difference.Should().Be(3);
+        }
     }
 }

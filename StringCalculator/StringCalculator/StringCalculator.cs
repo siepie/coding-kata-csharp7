@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StringCalculator
@@ -9,7 +10,7 @@ namespace StringCalculator
         {
             if (string.IsNullOrWhiteSpace(numbers)) return (0, 0);
 
-            var numbersToCalc = GetNumberFromString();
+            var numbersToCalc = GetNumbersFromString();
 
             var sum = numbersToCalc.Sum();
             var difference = numbersToCalc.First();
@@ -17,11 +18,28 @@ namespace StringCalculator
 
             return (sum, difference);
 
-            List<int> GetNumberFromString()
+            List<int> GetNumbersFromString()
             {
-                var input = numbers.Split(',');
+                string customDelimeter = GetCustomDelimeter();
+                if (!string.IsNullOrWhiteSpace(customDelimeter))
+                {
+                    numbers = numbers.After($"{customDelimeter}\n");
+                }
+
+                var input = numbers.Split(new string[] { ",", "\n", customDelimeter }, StringSplitOptions.None);
                 return input.Select(number => int.TryParse(number, out var parsedNumber) ? parsedNumber : 0).ToList();
+
+                string GetCustomDelimeter()
+                {
+                    if (numbers.StartsWith("//"))
+                    {
+                        return numbers.Between("//", "\n");
+                    }
+                    return "";
+                }
             }
+
+
         }
     }
 

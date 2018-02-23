@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System;
 using Xunit;
 
 namespace StringCalculator.Tests
@@ -93,6 +94,14 @@ namespace StringCalculator.Tests
             var (Sum, Difference) = StringCalculator.Calculate(numbers);
             Sum.Should().Be(35);
             Difference.Should().Be(3);
+        }
+
+        [Fact]
+        public void CalculateWithNegativeInputThrowsException()
+        {
+            string numbers = "9,-6,-1";
+            Exception ex = Assert.Throws<NegativesNotAllowedException>(() => StringCalculator.Calculate(numbers));
+            ex.Message.Should().Be("Negative numbers not allowed: -6 -1");
         }
     }
 }

@@ -12,6 +12,17 @@ namespace StringCalculator
 
             var numbersToCalc = GetNumbersFromString();
 
+            if (numbersToCalc.Any(n => n < 0))
+            {
+                string t = "";
+                foreach (var item in numbersToCalc.FindAll(n => n < 0))
+                {
+                    t += $" {item}";
+                }
+                var message = $"Negative numbers not allowed:{t}";
+                throw new NegativesNotAllowedException(message);
+            }
+
             var sum = numbersToCalc.Sum();
             var difference = numbersToCalc.First();
             difference = numbersToCalc.Where((t, i) => i > 0).Aggregate(difference, (current, t) => current - t);

@@ -10,18 +10,8 @@ namespace StringCalculator
         {
             if (string.IsNullOrWhiteSpace(numbers)) return (0, 0);
 
-            var numbersToCalc = GetNumbersFromString();
-
-            if (numbersToCalc.Any(n => n < 0))
-            {
-                string t = "";
-                foreach (var item in numbersToCalc.FindAll(n => n < 0))
-                {
-                    t += $" {item}";
-                }
-                var message = $"Negative numbers not allowed:{t}";
-                throw new NegativesNotAllowedException(message);
-            }
+            var numbersFromInput = GetNumbersFromString();
+            var numbersToCalc = SanitizeNumbers();
 
             var sum = numbersToCalc.Sum();
             var difference = numbersToCalc.First();
@@ -37,20 +27,28 @@ namespace StringCalculator
                     numbers = numbers.After($"{customDelimeter}\n");
                 }
 
-                var input = numbers.Split(new string[] { ",", "\n", customDelimeter }, StringSplitOptions.None);
+                var input = numbers.Split(new[] { ",", "\n", customDelimeter }, StringSplitOptions.None);
                 return input.Select(number => int.TryParse(number, out var parsedNumber) ? parsedNumber : 0).ToList();
 
                 string GetCustomDelimeter()
                 {
-                    if (numbers.StartsWith("//"))
-                    {
-                        return numbers.Between("//", "\n");
-                    }
-                    return "";
+                    return numbers.StartsWith("//") ? numbers.Between("//", "\n") : "";
                 }
             }
 
+            List<int> SanitizeNumbers()
+            {
+                if (numbersFromInput.Any(n => n < 0))
+                {
+                    var message = $"Negative numbers not allowed:{string.Join(",", numbersFromInput.FindAll(n => n < 0).ToArray())}";
+                    throw new NegativesNotAllowedException(message);
+                }
 
+                int[] indexes = Enumerable.Range(0, numbersFromInput.Count).Where(i => numbersFromInput[i] >= 1000).ToArray();
+                Array.ForEach(indexes, i => numbersFromInput[i] = numbersFromInput[i] - 1000);
+
+                return numbersFromInput;
+            }
         }
     }
 

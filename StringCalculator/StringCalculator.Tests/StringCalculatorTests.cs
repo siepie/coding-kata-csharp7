@@ -101,7 +101,16 @@ namespace StringCalculator.Tests
         {
             string numbers = "9,-6,-1";
             Exception ex = Assert.Throws<NegativesNotAllowedException>(() => StringCalculator.Calculate(numbers));
-            ex.Message.Should().Be("Negative numbers not allowed: -6 -1");
+            ex.Message.Should().Be("Negative numbers not allowed:-6,-1");
+        }
+
+        [Fact]
+        public void CalculateMoreThanThousandShouldBeIgnored()
+        {
+            string numbers = "1009,4,1000,2";
+            var (Sum, Difference) = StringCalculator.Calculate(numbers);
+            Sum.Should().Be(15);
+            Difference.Should().Be(3);
         }
     }
 }

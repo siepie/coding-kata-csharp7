@@ -14,10 +14,39 @@ namespace FizzBuzz.Tests
             result.Should().BeEquivalentTo(GetExpectedResult());
         }
 
+        [Fact]
+        public void FizzBuzzWithStringInput()
+        {
+            var input = new List<object>
+            {
+                1, 2, "3", "4", 5, 6, 7, 8, 9, 10, "11", "12", 13, 14, 15
+            };
+            var expected = new List<string>
+            {
+                "1",
+                "2",
+                "Fizz",
+                "4",
+                "Buzz",
+                "Fizz",
+                "7",
+                "8",
+                "Fizz",
+                "Buzz",
+                "11",
+                "Fizz",
+                "13",
+                "14",
+                "FizzBuzz"
+            };
+            var result = FizzBuzz.FizzAndBuzz(input);
+            result.Should().BeEquivalentTo(expected);
+        }
+
         private List<object> PopulateList()
         {
             var list = new List<object>();
-            for (var i = 0; i <= 100; i++)
+            for (var i = 1; i <= 100; i++)
             {
                 list.Add(i);
             }

@@ -21,18 +21,34 @@ namespace StringCalculator
 
             List<int> GetNumbersFromString()
             {
-                string customDelimeter = GetCustomDelimeter();
-                if (!string.IsNullOrWhiteSpace(customDelimeter))
+                string[] delimiters = GetDelimeters();
+                if (numbers.StartsWith("//"))
                 {
-                    numbers = numbers.After($"{customDelimeter}\n");
+                    numbers = numbers.AfterFirst("\n");
                 }
 
-                var input = numbers.Split(new[] { ",", "\n", customDelimeter }, StringSplitOptions.None);
+                var input = numbers.Split(delimiters, StringSplitOptions.None);
                 return input.Select(number => int.TryParse(number, out var parsedNumber) ? parsedNumber : 0).ToList();
 
-                string GetCustomDelimeter()
+                string[] GetDelimeters()
                 {
-                    return numbers.StartsWith("//") ? numbers.Between("//", "\n") : "";
+                    var delimitersList = new List<string>();
+                    if (numbers.StartsWith("//"))
+                    {
+                        var customDelimiters = numbers.Between("//", "\n");
+                        if (customDelimiters.Count(c => c == '[') > 0)
+                        {
+                            delimitersList = customDelimiters.Split('[', ']').Where((item, index) => index % 2 != 0)
+                                .ToList();
+                        }
+                        else
+                        {
+                            delimitersList.Add(customDelimiters);
+                        }
+                    }
+                    delimitersList.Add(",");
+                    delimitersList.Add("\n");
+                    return delimitersList.ToArray();
                 }
             }
 

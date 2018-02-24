@@ -97,6 +97,15 @@ namespace StringCalculator.Tests
         }
 
         [Fact]
+        public void CalculateWithDefaultAndMultipleCustomDelimiters()
+        {
+            string numbers = "//[**][;]\n19**4,1;2\n9";
+            var (Sum, Difference) = StringCalculator.Calculate(numbers);
+            Sum.Should().Be(35);
+            Difference.Should().Be(3);
+        }
+
+        [Fact]
         public void CalculateWithNegativeInputThrowsException()
         {
             string numbers = "9,-6,-1";

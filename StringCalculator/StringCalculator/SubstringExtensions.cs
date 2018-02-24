@@ -1,4 +1,6 @@
-﻿namespace StringCalculator
+﻿using System;
+
+namespace StringCalculator
 {
     static class SubstringExtensions
     {
@@ -7,8 +9,8 @@
         /// </summary>
         public static string Between(this string value, string a, string b)
         {
-            int posA = value.IndexOf(a);
-            int posB = value.IndexOf(b);
+            int posA = value.IndexOf(a, StringComparison.Ordinal);
+            int posB = value.IndexOf(b, StringComparison.Ordinal);
             if (posA == -1)
             {
                 return "";
@@ -26,11 +28,29 @@
         }
 
         /// <summary>
+        /// Get string value after [first] a.
+        /// </summary>
+        public static string AfterFirst(this string value, string a)
+        {
+            int posA = value.IndexOf(a, StringComparison.Ordinal);
+            if (posA == -1)
+            {
+                return "";
+            }
+            int adjustedPosA = posA + a.Length;
+            if (adjustedPosA >= value.Length)
+            {
+                return "";
+            }
+            return value.Substring(adjustedPosA);
+        }
+
+        /// <summary>
         /// Get string value after [last] a.
         /// </summary>
-        public static string After(this string value, string a)
+        public static string AfterLast(this string value, string a)
         {
-            int posA = value.LastIndexOf(a);
+            int posA = value.LastIndexOf(a, StringComparison.Ordinal);
             if (posA == -1)
             {
                 return "";

@@ -21,34 +21,29 @@ namespace StringCalculator
 
             List<int> GetNumbersFromString()
             {
-                string[] delimiters = GetDelimeters();
+                var delimiters = new List<string> { ",", "\n" };
+
                 if (numbers.StartsWith("//"))
                 {
+                    GetDelimeters();
                     numbers = numbers.AfterFirst("\n");
                 }
 
-                var input = numbers.Split(delimiters, StringSplitOptions.None);
+                var input = numbers.Split(delimiters.ToArray(), StringSplitOptions.None);
                 return input.Select(number => int.TryParse(number, out var parsedNumber) ? parsedNumber : 0).ToList();
 
-                string[] GetDelimeters()
+                void GetDelimeters()
                 {
-                    var delimitersList = new List<string>();
-                    if (numbers.StartsWith("//"))
+                    var customDelimiters = numbers.Between("//", "\n");
+                    if (customDelimiters.Count(c => c == '[') > 0)
                     {
-                        var customDelimiters = numbers.Between("//", "\n");
-                        if (customDelimiters.Count(c => c == '[') > 0)
-                        {
-                            delimitersList = customDelimiters.Split('[', ']').Where((item, index) => index % 2 != 0)
-                                .ToList();
-                        }
-                        else
-                        {
-                            delimitersList.Add(customDelimiters);
-                        }
+                        delimiters.AddRange(customDelimiters.Split('[', ']').Where((item, index) => index % 2 != 0)
+                            .ToList());
                     }
-                    delimitersList.Add(",");
-                    delimitersList.Add("\n");
-                    return delimitersList.ToArray();
+                    else
+                    {
+                        delimiters.Add(customDelimiters);
+                    }
                 }
             }
 

@@ -60,10 +60,7 @@ namespace StringCalculator
                     throw new NegativesNotAllowedException(message);
                 }
 
-                int[] indexes = Enumerable.Range(0, numbersFromInput.Count).Where(i => numbersFromInput[i] >= 1000).ToArray();
-                Array.ForEach(indexes, i => numbersFromInput[i] = numbersFromInput[i] - 1000);
-
-                return numbersFromInput;
+                return numbersFromInput.Select(n => n >= 1000 ? n - 1000 : n).ToList();
             }
         }
     }
